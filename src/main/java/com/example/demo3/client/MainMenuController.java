@@ -1,34 +1,35 @@
 package com.example.demo3.client;
 
+import com.example.demo3.service_logic.Service_Logic;
 import javafx.application.Platform;
-import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 
 import java.io.IOException;
 
 public class MainMenuController {
     private final SceneController sceneController = new SceneController();
-    @FXML
-    private Label welcomeText;
+    private Service_Logic service;
+
+    public void setService(Service_Logic service) {
+        this.service = service;
+    }
 
     @FXML
     public void onNewGameButtonPress(ActionEvent event) throws IOException {
-        sceneController.switchToNewGame(new ActionEvent());
+        sceneController.switchToNewGame(event,service);
     }
     @FXML
     public void onLoadGameButtonPress(ActionEvent event) throws IOException {
-        sceneController.switchToLoadGame(new ActionEvent());
+        sceneController.switchToLoadGame(event, service);
     }
     @FXML
     public void onDeleteGameButtonPress(ActionEvent event) throws IOException {
-        sceneController.switchToDeleteGame(new ActionEvent());
+        sceneController.switchToDeleteGame(event,service);
     }
-
-
     @FXML
-    private void onExitButtonPressed(ActionEvent event) {
+    private void onExitButtonPressed() {
         Platform.exit();
     }
 }
+
