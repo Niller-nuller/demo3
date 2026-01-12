@@ -4,14 +4,31 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
-import java.awt.event.ActionEvent;
+import javafx.event.ActionEvent;
+
+import java.io.IOException;
 
 public class MainMenuController {
+    private final SceneController sceneController = new SceneController();
     @FXML
     private Label welcomeText;
 
     @FXML
-    private void exitButtonPressed(ActionEvent event) {
+    public void onNewGameButtonPress(ActionEvent event) throws IOException {
+        sceneController.switchToNewGame(new ActionEvent());
+    }
+    @FXML
+    public void onLoadGameButtonPress(ActionEvent event) throws IOException {
+        sceneController.switchToLoadGame(new ActionEvent());
+    }
+    @FXML
+    public void onDeleteGameButtonPress(ActionEvent event) throws IOException {
+        sceneController.switchToDeleteGame(new ActionEvent());
+    }
+
+
+    @FXML
+    private void onExitButtonPressed(ActionEvent event) {
         Platform.exit();
     }
 }
