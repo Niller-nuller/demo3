@@ -17,5 +17,20 @@
             <Font size="18.0" />
          </font>
       </Button>
+      <Button layoutX="248.0" layoutY="323.0" mnemonicParsing="false" text="Exit Game">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button layoutX="243.0" layoutY="210.0" mnemonicParsing="false" text="Load Game">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button layoutX="214.0" layoutY="267.0" mnemonicParsing="false" text="Delete A Character">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
