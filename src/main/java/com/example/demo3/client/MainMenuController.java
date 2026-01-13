@@ -20,15 +20,15 @@ public class MainMenuController {
     }
     @FXML
     public void onNewGameButtonPress(ActionEvent event) throws IOException {
-        sceneController.switchToNewGame(event,service);
+        sceneController.switchToNewGame(event,service,sceneController);
     }
     @FXML
     public void onLoadGameButtonPress(ActionEvent event) throws IOException {
-        sceneController.switchToLoadGame(event, service);
+        sceneController.switchToLoadGame(event, service,sceneController);
     }
     @FXML
     public void onDeleteGameButtonPress(ActionEvent event) throws IOException {
-        sceneController.switchToDeleteGame(event,service);
+        sceneController.switchToDeleteGame(event,service,sceneController);
     }
     @FXML
     private void onExitButtonPressed() {
