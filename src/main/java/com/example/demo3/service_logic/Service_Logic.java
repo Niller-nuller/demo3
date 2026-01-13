@@ -27,4 +27,7 @@ public class Service_Logic {
         }
         return null;
     }
+    public ArrayList<Player> getPlayers(){
+        return players;
+    }
 }

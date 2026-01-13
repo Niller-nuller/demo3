@@ -8,13 +8,16 @@ import javafx.fxml.FXML;
 import java.io.IOException;
 
 public class MainMenuController {
-    private final SceneController sceneController = new SceneController();
+
     private Service_Logic service;
+    private SceneController sceneController;
 
     public void setService(Service_Logic service) {
         this.service = service;
     }
-
+    public void setSceneController(SceneController sceneController) {
+        this.sceneController = sceneController;
+    }
     @FXML
     public void onNewGameButtonPress(ActionEvent event) throws IOException {
         sceneController.switchToNewGame(event,service);

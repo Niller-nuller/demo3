@@ -13,7 +13,7 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <Label fx:id="newGameLabel" layoutX="126.0" layoutY="117.0" text="Enter the name of your character">
+      <Label fx:id="newGameLabel" layoutX="126.0" layoutY="117.0" text="Enter the name of your character" textAlignment="CENTER">
          <font>
             <Font size="24.0" />
          </font>

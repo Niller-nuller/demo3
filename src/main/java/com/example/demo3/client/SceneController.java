@@ -25,23 +25,24 @@ public class SceneController {
         stage.setScene(scene);
         stage.show();
     }
+
     public void switchToNewGame(ActionEvent event, Service_Logic service) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demo3/NewGame.fxml"));
-        switchScenes(event, service, loader);
+        switchScenes(event, service, loader, sceneController);
     }
-
     public void switchToLoadGame(ActionEvent event, Service_Logic service) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demo3/LoadGame.fxml"));
-        switchScenes(event, service, loader);
+        switchScenes(event, service, loader, sceneController);
     }
     public void switchToDeleteGame(ActionEvent event, Service_Logic service) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demo3/DeleteGame.fxml"));
-        switchScenes(event, service, loader);
+        switchScenes(event, service, loader, sceneController);
     }
-    private void switchScenes(ActionEvent event, Service_Logic service, FXMLLoader loader) throws IOException {
+    private void switchScenes(ActionEvent event, Service_Logic service, FXMLLoader loader,SceneController sceneController) throws IOException {
         Parent root = loader.load();
         NewGameController controller = loader.getController();
         controller.setService(service);
+        controller.setSceneController(sceneController);
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
