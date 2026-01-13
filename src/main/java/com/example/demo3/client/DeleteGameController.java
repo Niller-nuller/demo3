@@ -44,8 +44,23 @@ public class DeleteGameController {
             }
         });
     }
+    @FXML
     private void onClickBackToMainMenu(ActionEvent event) throws IOException {
         sceneController.switchToMainMenu(event);
+    }
+    @FXML
+    private void onClickDeleteGame(){
+        Player selectedPlayer = playerListView.getSelectionModel().getSelectedItem();
+        if(selectedPlayer != null){
+            if(service.deletePlayer(selectedPlayer)){
+                labelDeleteGame.setText("Deleted " + selectedPlayer.getName());
+                populatePlayerList();
+            }else{
+                labelDeleteGame.setText("Player " + selectedPlayer.getName() + " not found");
+            }
+        } else{
+            labelDeleteGame.setText("Please select a player");
+        }
     }
 }
 

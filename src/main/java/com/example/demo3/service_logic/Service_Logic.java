@@ -18,7 +18,9 @@ public class Service_Logic {
         players.add(newPlayer);
         return newPlayer;
     }
-
+    public boolean deletePlayer(Player player){
+        return players.remove(player);
+    }
     private Player checkIfPlayerExists(String name){
         for(Player p : players){
             if(p.getName().equals(name)){

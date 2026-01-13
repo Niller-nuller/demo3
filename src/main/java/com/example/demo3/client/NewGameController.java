@@ -1,5 +1,6 @@
 package com.example.demo3.client;
 
+import com.example.demo3.models.Player;
 import com.example.demo3.service_logic.Service_Logic;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -31,9 +32,12 @@ public class NewGameController {
     public void onCreateCharacter() throws IOException {
         if(playerNameField.getText().isEmpty()){
             newGameLabel.setText("You need to enter a name. To create a new character.");
+            return;
         }
-        String playerName = playerNameField.getText();
-        service.createPlayer(playerName);
+        String playerName = playerNameField.getText().trim();
+        if ((service.createPlayer(playerName) == null)){
+            newGameLabel.setText("The character " + playerName + " already exists.");
+        }
     }
 
 }

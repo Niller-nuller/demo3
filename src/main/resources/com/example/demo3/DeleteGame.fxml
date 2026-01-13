@@ -14,7 +14,7 @@
             <Font size="18.0" />
          </font>
       </Button>
-      <Button layoutX="193.0" layoutY="347.0" mnemonicParsing="false" text="Delete Character">
+      <Button layoutX="193.0" layoutY="347.0" mnemonicParsing="false" onAction="#onClickDeleteGame" text="Delete Character">
          <font>
             <Font size="18.0" />
          </font>
