@@ -4,10 +4,13 @@ import com.example.demo3.models.Player;
 import com.example.demo3.service_logic.Service_Logic;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+
+import java.io.IOException;
 
 public class DeleteGameController {
 
@@ -31,7 +34,7 @@ public class DeleteGameController {
         this.sceneController = sceneController;
     }
     @FXML
-    public void populatePlayerList() {
+    private void populatePlayerList() {
         ObservableList<Player> playerObservableList = FXCollections.observableArrayList(service.getPlayers());
         playerListView.setItems(playerObservableList);
         playerListView.setCellFactory(lv -> new ListCell<Player>() {
@@ -40,6 +43,9 @@ public class DeleteGameController {
                 setText(empty ? null : player.getName());
             }
         });
+    }
+    private void onClickBackToMainMenu(ActionEvent event) throws IOException {
+        sceneController.switchToMainMenu(event);
     }
 }
 

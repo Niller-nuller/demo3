@@ -21,8 +21,8 @@ public class LoadGameController {
 
     @FXML
     private ListView<Player> playerListView;
-
-    public void initialize(){
+    @FXML
+    private void initialize(){
         populatePlayerList();}
 
     public void setService(Service_Logic service) {
@@ -39,7 +39,7 @@ public class LoadGameController {
     }
 
     @FXML
-    public void populatePlayerList() {
+    private void populatePlayerList() {
         ObservableList<Player> playerObservableList = FXCollections.observableArrayList(service.getPlayers());
         playerListView.setItems(playerObservableList);
         playerListView.setCellFactory(lv -> new ListCell<Player>() {
