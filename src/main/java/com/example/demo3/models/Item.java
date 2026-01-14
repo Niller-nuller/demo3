@@ -1,6 +1,6 @@
 package com.example.demo3.models;
 
-abstract class Item {
+public abstract class Item {
     private final String name;
     private final double weight;
 

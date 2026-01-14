@@ -29,15 +29,20 @@ public class NewGameController {
         sceneController.switchToMainMenu(event);
     }
     @FXML
-    public void onCreateCharacter() throws IOException {
-        if(playerNameField.getText().isEmpty()){
-            newGameLabel.setText("You need to enter a name. To create a new character.");
+    public void onCreateCharacter(ActionEvent event) throws IOException {
+        String name = playerNameField.getText().trim();
+        if (name.isEmpty()) {
+            newGameLabel.setText("Please enter a name for your character");
             return;
         }
-        String playerName = playerNameField.getText().trim();
-        if ((service.createPlayer(playerName) == null)){
-            newGameLabel.setText("The character " + playerName + " already exists.");
+
+        Player created = service.createPlayer(name);
+        if (created != null) {
+            service.setCurrentPlayer(created);
+            newGameLabel.setText("Created: " + name);
+            sceneController.switchToGameScene(event, service);
+        } else {
+            newGameLabel.setText("Name is already in use: " + name);
         }
     }
-
 }

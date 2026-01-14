@@ -4,16 +4,29 @@ import java.util.ArrayList;
 
 public class Slots {
 
+    private static final int max_Item_Per_Stack = 5;
     private final ArrayList<Item> playerItems = new ArrayList<>();
-    private static final int Max_Inventory_Size = 192;
 
     public Slots() {}
 
-    public boolean canAddItem(Item newItem){
-        if(items.size() >= 5) return false;
+    public boolean canAddItem(Item newItem) {
 
-        for(Item e : playerItems){
-            if(e.getName().equals(newItem.getName())){}
+        if (newItem instanceof Consumable newConsumable && newConsumable.isStackable()) {
+            long sameTypeCount = playerItems.stream()
+                    .filter(item -> item instanceof Consumable)
+                    .map(item -> (Consumable) item)
+                    .filter(c -> c.isStackable()
+                    && c.getName().equals(newItem.getName()))
+                    .count();
+
+            if (sameTypeCount >= newConsumable.getMaxStackSize()) {
+                return false;
+            }
         }
+        return playerItems.size() < max_Item_Per_Stack;
     }
+    public void addItem(Item newItem) {
+
+    }
+
 }

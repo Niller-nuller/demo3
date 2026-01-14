@@ -49,7 +49,17 @@ public class LoadGameController {
             }
         });
     }
+
     @FXML
     public void onClickLoadGame(ActionEvent event) throws IOException {
+        Player selected = playerListView.getSelectionModel().getSelectedItem();
+        if (selected == null) {
+            labelLoadGame.setText("Please select a player");
+            return;
+        }
+
+        service.setCurrentPlayer(selected);
+        labelLoadGame.setText("Loaded: " + selected.getName());
+        sceneController.switchToGameScene(event, service);
     }
 }

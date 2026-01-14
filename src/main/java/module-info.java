@@ -4,6 +4,7 @@ module com.example.demo3 {
     requires java.desktop;
     requires javafx.graphics;
     requires javafx.base;
+    requires com.example.demo3;
 
 
     opens com.example.demo3 to javafx.fxml;

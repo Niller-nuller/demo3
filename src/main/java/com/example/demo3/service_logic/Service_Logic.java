@@ -1,13 +1,17 @@
 package com.example.demo3.service_logic;
 
+import com.example.demo3.models.Item;
 import com.example.demo3.models.Player;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Service_Logic {
 
-    ArrayList<Player> players = new ArrayList<>();
+    private Player currentPlayer;
 
+    ArrayList<Player> players = new ArrayList<>();
+    ArrayList<Item> worldItems = new ArrayList<>();
     public Service_Logic(){}
 
     public Player createPlayer(String name){
@@ -31,5 +35,15 @@ public class Service_Logic {
     }
     public ArrayList<Player> getPlayers(){
         return players;
+    }
+
+    public void addItem(Item newItem){
+
+    }
+    public void setCurrentPlayer(Player player){
+        currentPlayer = Objects.requireNonNull(player);
+    }
+    public Player getCurrentPlayer(){
+        return Objects.requireNonNull(currentPlayer);
     }
 }
