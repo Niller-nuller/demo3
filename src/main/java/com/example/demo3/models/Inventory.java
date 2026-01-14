@@ -40,6 +40,7 @@ public class Inventory {
     public int getUsedSlots(){
         return (int) inventorySlots.stream().filter(s -> !s.isEmpty()).count();
     }
+
     public boolean hasSpaceFor(Item item) {
         return inventoryWeight + item.getWeight() <= Max_Weight;
     }

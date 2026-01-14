@@ -59,9 +59,9 @@ public class SceneController {
         stage.show();
     }
     public void switchToGameScene(ActionEvent event, Service_Logic service) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("com/example/demo3/GameScene.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("com.example.demo3.GameScene.fxml"));
         Parent root = loader.load();
-        DeleteGameController controller = loader.getController();
+        GameSceneController controller = loader.getController();
         controller.setService(service);
         controller.setSceneController(this);
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

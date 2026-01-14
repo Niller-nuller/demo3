@@ -28,5 +28,8 @@ public class Slots {
     public void addItem(Item newItem) {
 
     }
+    public boolean isEmpty() {
+        return playerItems.isEmpty();
+    }
 
 }
