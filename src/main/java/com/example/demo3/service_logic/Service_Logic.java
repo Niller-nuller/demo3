@@ -38,12 +38,19 @@ public class Service_Logic {
     }
 
     public void addItem(Item newItem){
+        currentPlayer.getPlayerInventory().addItem(newItem);
 
     }
+    public void removeItem(Item newItem){
+        currentPlayer.getPlayerInventory().removeItem(newItem);
+    }
+
     public void setCurrentPlayer(Player player){
         currentPlayer = Objects.requireNonNull(player);
     }
     public Player getCurrentPlayer(){
         return Objects.requireNonNull(currentPlayer);
     }
+
+
 }

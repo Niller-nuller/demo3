@@ -25,11 +25,14 @@ public class DeleteGameController {
 
     @FXML
     public void initialize(){
-        populatePlayerList();
+        ;
     }
+
     public void setService(Service_Logic service) {
         this.service = service;
+        populatePlayerList();
     }
+
     public void setSceneController(SceneController sceneController) {
         this.sceneController = sceneController;
     }

@@ -1,9 +1,6 @@
 package com.example.demo3.models;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Inventory {
     private static final int Max_Slots = 192;
@@ -17,14 +14,23 @@ public class Inventory {
             inventorySlots.add(new Slots());
         }
     }
-    public boolean addItem(Item item){
-        if (inventoryWeight + item.getWeight() > Max_Weight) {
+    public boolean addItem(Item itemToAdd){
+        if (inventoryWeight + itemToAdd.getWeight() > Max_Weight) {
             return false;
         }
         for (Slots slot : inventorySlots) {
-            if(slot.canAddItem(item)){
-                slot.addItem(item);
-                inventoryWeight += item.getWeight();
+            if(slot.canAddItem(itemToAdd)){
+                slot.addItem(itemToAdd);
+                inventoryWeight += itemToAdd.getWeight();
+                return true;
+            }
+        }
+        return false;
+    }
+    public boolean removeItem(Item itemToRemove){
+        for (Slots slot : inventorySlots) {
+            if(slot.removeItem(itemToRemove)){
+                inventoryWeight -= itemToRemove.getWeight();
                 return true;
             }
         }
@@ -32,7 +38,7 @@ public class Inventory {
     }
 
     public List<Slots> getInventorySlots() {
-        return inventorySlots;
+        return Collections.unmodifiableList(inventorySlots);
     }
     public double getInventoryWeight() {
         return inventoryWeight;

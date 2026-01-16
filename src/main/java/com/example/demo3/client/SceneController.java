@@ -16,13 +16,10 @@ public class SceneController {
     private Stage stage;
     private Scene scene;
 
-    public void switchToMainMenu(javafx.event.ActionEvent event) throws IOException {
+    public void switchToMainMenu(javafx.event.ActionEvent event ) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demo3/MainMenu.fxml"));
         Parent root = loader.load();
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        showScene(event,root);
     }
 
     public void switchToNewGame(ActionEvent event, Service_Logic service ) throws IOException {
@@ -31,10 +28,7 @@ public class SceneController {
         NewGameController controller = loader.getController();
         controller.setService(service);
         controller.setSceneController(this);
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        showScene(event,root);
     }
     public void switchToLoadGame(ActionEvent event, Service_Logic service ) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demo3/LoadGame.fxml"));
@@ -42,10 +36,7 @@ public class SceneController {
         LoadGameController controller = loader.getController();
         controller.setService(service);
         controller.setSceneController(this);
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        showScene(event,root);
     }
     public void switchToDeleteGame(ActionEvent event, Service_Logic service ) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demo3/DeleteGame.fxml"));
@@ -53,30 +44,20 @@ public class SceneController {
         DeleteGameController controller = loader.getController();
         controller.setService(service);
         controller.setSceneController(this);
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        showScene(event,root);
     }
     public void switchToGameScene(ActionEvent event, Service_Logic service) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("com.example.demo3.GameScene.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demo3/GameScene.fxml"));
         Parent root = loader.load();
         GameSceneController controller = loader.getController();
         controller.setService(service);
         controller.setSceneController(this);
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
+        showScene(event,root);
+    }
+    private void showScene(ActionEvent event, Parent root) {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
-//    private void switchScenes(ActionEvent event, Service_Logic service, FXMLLoader loader,SceneController sceneController) throws IOException {
-//        Parent root = loader.load();
-//        NewGameController controller = loader.getController();
-//        controller.setService(service);
-//        controller.setSceneController(this);
-//        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-//        scene = new Scene(root);
-//        stage.setScene(scene);
-//        stage.show();
-//    }
 }
