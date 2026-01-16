@@ -23,14 +23,14 @@ public class DeleteGameController {
     @FXML
     private ListView<Player> playerListView;
 
-    @FXML
-    public void initialize(){
-        ;
-    }
-
     public void setService(Service_Logic service) {
         this.service = service;
-        populatePlayerList();
+    }
+    @FXML
+    public void initialize() {
+        if(service!=null){
+            populatePlayerList();
+        }
     }
 
     public void setSceneController(SceneController sceneController) {
@@ -49,7 +49,7 @@ public class DeleteGameController {
     }
     @FXML
     private void onClickBackToMainMenu(ActionEvent event) throws IOException {
-        sceneController.switchToMainMenu(event);
+        sceneController.switchToMainMenu(event, service);
     }
     @FXML
     private void onClickDeleteGame(){

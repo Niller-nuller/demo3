@@ -26,7 +26,7 @@ public class NewGameController {
     private TextField playerNameField;
     @FXML
     public void onClickBackToMainMenu(ActionEvent event) throws IOException {
-        sceneController.switchToMainMenu(event);
+        sceneController.switchToMainMenu(event,service);
     }
     @FXML
     public void onCreateCharacter(ActionEvent event) throws IOException {

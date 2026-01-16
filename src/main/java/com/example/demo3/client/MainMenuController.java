@@ -15,9 +15,12 @@ public class MainMenuController {
     public void setService(Service_Logic service) {
         this.service = service;
     }
+
     public void setSceneController(SceneController sceneController) {
         this.sceneController = sceneController;
     }
+    @FXML
+    public void initialize() {}
     @FXML
     public void onNewGameButtonPress(ActionEvent event) throws IOException {
         sceneController.switchToNewGame(event,service);

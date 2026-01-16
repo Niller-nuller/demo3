@@ -21,12 +21,15 @@ public class LoadGameController {
 
     @FXML
     private ListView<Player> playerListView;
-    @FXML
-    private void initialize(){}
 
     public void setService(Service_Logic service) {
         this.service = service;
-        populatePlayerList();
+    }
+    @FXML
+    public void initialize() {
+        if(service!=null){
+            populatePlayerList();
+        }
     }
 
     public void setSceneController(SceneController sceneController) {
@@ -35,7 +38,7 @@ public class LoadGameController {
 
     @FXML
     public void onClickBackToMainMenu(ActionEvent event) throws IOException {
-        sceneController.switchToMainMenu(event);
+        sceneController.switchToMainMenu(event,service);
     }
 
     @FXML

@@ -23,9 +23,11 @@ public class Main extends Application {
           Scene mainMenu = new Scene(fxmlLoader.load(), 620, 540);
           MainMenuController controller = fxmlLoader.getController();
           controller.setService(service);
+          sceneController.setStage(stage);
           controller.setSceneController(sceneController);
           stage.setTitle("Main Menu!");
           stage.setScene(mainMenu);
+
           stage.show();
      }
 }
