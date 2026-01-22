@@ -6,26 +6,24 @@ import java.util.List;
 
 public class Slots {
 
-    private static final int max_Item_Per_Stack = 5;
+    private Item singleItem;
     private final ArrayList<Item> playerItems = new ArrayList<>();
 
     public Slots() {}
 
     public boolean canAddItem(Item itemToAdd) {
-
-        if (itemToAdd instanceof Consumable newConsumable && newConsumable.isStackable()) {
-            long sameTypeCount = playerItems.stream()
-                    .filter(item -> item instanceof Consumable)
-                    .map(item -> (Consumable) item)
-                    .filter(c -> c.isStackable()
-                    && c.getName().equals(itemToAdd.getName()))
-                    .count();
-
-            if (sameTypeCount >= newConsumable.getMaxStackSize()) {
+        if(isEmpty()){
+            return true;
+        }
+        if(itemToAdd instanceof Consumable consumable && consumable.isStackable()){
+            if (singleItem != null){
                 return false;
             }
+            if (consumableStack.isEmpty()){
+                return true;
+            }
+
         }
-        return playerItems.size() < max_Item_Per_Stack;
     }
     public void addItem(Item itemToAdd) {
         if(!canAddItem(itemToAdd)) {

@@ -24,13 +24,10 @@ public class LoadGameController {
 
     public void setService(Service_Logic service) {
         this.service = service;
+        populatePlayerList();
     }
     @FXML
-    public void initialize() {
-        if(service!=null){
-            populatePlayerList();
-        }
-    }
+    public void initialize() {}
 
     public void setSceneController(SceneController sceneController) {
         this.sceneController = sceneController;

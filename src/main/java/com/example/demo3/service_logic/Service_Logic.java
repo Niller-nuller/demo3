@@ -25,13 +25,11 @@ public class Service_Logic {
     public boolean deletePlayer(Player player){
         return players.remove(player);
     }
+
     private Player checkIfPlayerExists(String name){
-        for(Player p : players){
-            if(p.getName().equals(name)){
-                return p;
-            }
-        }
-        return null;
+        return players.stream()
+                .filter(player -> Objects.equals(player.getName(), name))
+                .findFirst().orElse(null);
     }
     public ArrayList<Player> getPlayers(){
         return players;
